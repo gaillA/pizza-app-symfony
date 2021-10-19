@@ -55,27 +55,19 @@ class PizzaController extends AbstractController
    */
   public function search(Request $request): Response
   {
-    $method = $request->getMethod();
+    $name = $request->query->get('pizza');
     $repository = $this->getDoctrine()->getRepository(Pizza::class);
-    $pizzas = $repository->findAll();
+    $all = $repository->findAll();
 
-    if ('POST' === $method) {
-      $pizza = $repository->findOneBy([
-        "name" => $request->request->get('pizza')
-      ]);
-
-      if ($pizza) {
-        return $this->redirectToRoute('app_pizza_display', [
-          'id' => $pizza->getId()
-        ]);
-      }
-      return $this->render('pizza/search.html.twig', [
-        "error" => true,
-        "pizzas" => $pizzas
-      ]);
+    if (empty($name)) {
+      $pizzas = $repository->findAll();
+    } else {
+      $pizzas = $repository->findBy(['name' => $name]);
     }
+
     return $this->render('pizza/search.html.twig', [
-      "pizzas" => $pizzas
+      "pizzas" => $pizzas,
+      "all" => $all,
     ]);
   }
 
