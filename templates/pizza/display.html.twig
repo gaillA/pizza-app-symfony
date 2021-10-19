@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pizza! - {{ pizza.name }}{% endblock %}
+
+{% block main %}
+<div class="container">
+  <h3>{{ pizza.name }}</h3>
+  <div class="pizza-full center-align">
+    <img src="{{ asset('img/' ~ pizza.image) }}">
+    <p>{{ pizza.description }}</p>
+    <p>Prix : {{ pizza.price }} €</p>
+    <a href="{{ path('app_pizza_edit', { id: pizza.id }) }}" class="btn">Modifier Pizza</a>
+  </div>
+</div>
+{% endblock %}

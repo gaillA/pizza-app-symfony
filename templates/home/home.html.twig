@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pizza! - Accueil{% endblock %}
+
+{% block main %}
+<div class="container">
+  <h3>Nos Pizzas</h3>
+
+  <div class="row">
+    {% for pizza in pizzas %}
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ asset('img/' ~ pizza.image) }}">
+        </div>
+        <div class="card-content">
+          <h5>{{ pizza.name }}</h5>
+          <p>Prix : {{ pizza.price }} €</p>
+        </div>
+        <div class="card-action">
+          <a href="{{ path('app_pizza_display', { id: pizza.id }) }}" class="blue-grey-text darken-text-3">Voir plus...</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

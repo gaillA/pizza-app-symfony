@@ -1,0 +1,6 @@
+symfony new mon-nom-de-projet --full
+symfony server:start
+modifier le .env pour connecter la base de données
+symfony console doctrine:database:create
+symfony console make:entity
+symfony console doctrine:schema:update --force

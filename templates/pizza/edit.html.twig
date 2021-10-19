@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pizza! - Nouvelle Pizza{% endblock %}
+
+{% block main %}
+<div class="container">
+  <h3>Nouvelle Pizza</h3>
+  <div class="row">
+    <form method="POST" class="col s12" autocomplete="off">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="name" name="name" type="text" value="{{ pizza.name }}" class="validate" required>
+          <label for="name">Nom de la pizza</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="price" name="price" type="text" value="{{ pizza.price }}" class="validate" required>
+          <label for="price">Prix de la pizza</label>
+        </div>
+        <div class="input-field col s12">
+          <textarea id="description" name="description" class="materialize-textarea validate" required>{{ pizza.description }}</textarea>
+          <label for="description">Description</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="image" name="image" type="text" value="{{ pizza.image }}" class="validate" required>
+          <label for="image">Image de la pizza</label>
+        </div>
+        <div class="input-field col s6">
+          <button class="btn" name="valider" type="submit" value="valider">Modifier</button>
+        </div>
+        <div class="input-field col s6">
+          <button class="btn red darken-3 right" name="supprimer" type="submit" value="supprimer">Supprimer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
